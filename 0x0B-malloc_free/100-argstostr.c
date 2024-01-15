@@ -1,55 +1,50 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
-
 /**
- * argstosr - convert the params passed to the program to string
- * @ac: the argument count
- * @av: the argument vector
- *
- * Return: ...
- */
+  *argstostr - concatenates all arguments of the program.
+  *@ac: argument count.
+  *@av: pointer to array of size ac.
+  *Return: NULL if ac == 0 or av == null, Pointer to new string.
+  *NULL on fail.
+  */
 char *argstostr(int ac, char **av)
 {
-	int ch = 0, i = 0, j = 0, k = 0;
-	char *s;
+	int i, j, k, size;
+	char *arg;
 
+	size = 0;
+	k = 0;
 	if (ac == 0 || av == NULL)
 		return (NULL);
-
-	while  (i < ac)
+	i = 0;
+	while (i < ac)
 	{
+		j = 0;
 		while (av[i][j])
 		{
-			ch++;
+			size++;
 			j++;
 		}
-
-		j = 0;
+		size++;
 		i++;
 	}
-
-	s = malloc((sizeof(char) * ch) + ac + 1);
-
+	arg = malloc((sizeof(char) * size) + 1);
+	if (arg == NULL)
+		return (NULL);
 	i = 0;
-	while (av[i])
+	while (i < ac)
 	{
+		j = 0;
 		while (av[i][j])
 		{
-			s[k] = av[i][j];
-			k++;
+			arg[k] = av[i][j];
 			j++;
+			k++;
 		}
-
-		s[k] = '\n';
-
-		j = 0;
+		arg[k] = '\n';
 		k++;
 		i++;
 	}
-
-	k++;
-	s[k] = '\0';
-	return (s);
+	arg[k] = '\0';
+	return (arg);
 }
-
