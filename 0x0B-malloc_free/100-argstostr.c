@@ -7,7 +7,7 @@
  * @ac: the argument count
  * @av: the argument vector
  *
- * Return
+ * Return: ...
  */
 char *argstostr(int ac, char **av)
 {
