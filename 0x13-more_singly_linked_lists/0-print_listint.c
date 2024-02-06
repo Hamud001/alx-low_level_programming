@@ -2,9 +2,9 @@
 
 /**
  * print_listint - print in a singly linked list
- * @h: the head pointer
  *
- * Return: The number of nodes 
+ * @h: the head pointer
+ * Return: The number of nodes
  */
 size_t print_listint(const listint_t *h)
 {
